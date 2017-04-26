@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ObjectivePool:MonoBehaviour{
 
-    public static Queue<GameObject> pool = new Queue<GameObject>();
+    public static Queue<GameObject> bulletPool = new Queue<GameObject>();
+    public static Queue<GameObject> enemyPool = new Queue<GameObject>();
 
     public static GameObject GetFromPool()
     {
         GameObject bullet;
 
-        if (pool.Count > 0)
+        if (bulletPool.Count > 0)
         {
-            bullet = pool.Dequeue();
+            bullet = bulletPool.Dequeue();
             bullet.SetActive(true);
 
         }else
@@ -27,7 +28,7 @@ public class ObjectivePool:MonoBehaviour{
    }
     public static void AddToPool(GameObject obj){
         obj.SetActive(false);
-        pool.Enqueue(obj);
+        bulletPool.Enqueue(obj);
 
     }
 
