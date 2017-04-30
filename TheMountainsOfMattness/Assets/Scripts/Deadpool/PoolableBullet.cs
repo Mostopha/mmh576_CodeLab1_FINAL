@@ -47,12 +47,8 @@ public class PoolableBullet : Poolable {
              player = GameObject.Find("Player");
          }
 
-         Rigidbody rb = GetComponent<Rigidbody>();
-
-         
-
-
-         transform.position = player.transform.position + new Vector3(0, 1, 0);
+        Rigidbody rb = GetComponent<Rigidbody>();
+        transform.position = player.transform.position + new Vector3(0, 1, 0);
 
         rb.velocity = Vector3.zero;
         rb.AddForce(Vector3.up * moveSpeed);
