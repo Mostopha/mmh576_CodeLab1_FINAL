@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shoot : MonoBehaviour {
+public class shoot : MonoBehaviour
+{
 
     public GameObject bullet;
     public float speed = 5.0f;
@@ -23,7 +24,16 @@ public class shoot : MonoBehaviour {
             direction.Normalize();
             GameObject projectile = (GameObject)Instantiate(bullet, myPos, Quaternion.identity);
             projectile.GetComponent<Rigidbody2D>().velocity = direction * speed;
-        }
-    }
 
+
+
+            Physics2D.GetIgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+
+
+
+
+
+
+    }
 }
