@@ -20,11 +20,11 @@ public class shoot : MonoBehaviour
 
     void OnGUI()
     {
-        //draw the background:
+       
         GUI.BeginGroup(new Rect(pos.x, pos.y, size.x, size.y));
         GUI.Box(new Rect(0, 0, size.x, size.y), emptyTex);
 
-        //draw the filled-in part:
+        
         GUI.BeginGroup(new Rect(0, 0, size.x * barDisplay, size.y));
         GUI.Box(new Rect(0, 0, size.x, size.y), fullTex);
         GUI.EndGroup();
@@ -53,7 +53,7 @@ public class shoot : MonoBehaviour
                 Vector2 myPos = new Vector2(transform.position.x, transform.position.y + 1);
                 Vector2 direction = target - myPos;
                 direction.Normalize();
-                // GameObject projectile = (GameObject)Instantiate(bullet, myPos, Quaternion.identity);
+          
 
                 GameObject projectile = ObjectPool.GetFromPool(Poolable.types.BULLET);
                 projectile.GetComponent<Rigidbody2D>().velocity = direction * speed;
