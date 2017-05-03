@@ -80,6 +80,7 @@ public class shoot : MonoBehaviour
                 {
                     Debug.Log("Ammo Restored");
                     ammo = 10;
+                    Destroy(rayHit.collider.gameObject);
                 }
             }
             else
