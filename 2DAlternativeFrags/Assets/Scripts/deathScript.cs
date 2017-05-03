@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class deathScript : MonoBehaviour {
+    public float health = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -12,7 +13,12 @@ public class deathScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+        if (health < 1)
+        {
+            Destroy(transform.parent.gameObject);
+            Destroy(gameObject);
+        }
 	}
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -21,6 +27,11 @@ public class deathScript : MonoBehaviour {
         {
             Destroy(coll.gameObject);
             Invoke("Restart", 2);
+        }
+
+        if (coll.gameObject.tag == "Bullet")
+        {
+            health--;
         }
 
     }
