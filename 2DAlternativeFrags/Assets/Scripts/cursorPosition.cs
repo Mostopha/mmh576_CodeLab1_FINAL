@@ -14,5 +14,6 @@ public class cursorPosition : MonoBehaviour {
         Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
         transform.position = target;
+        
     }
 }
