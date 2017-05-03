@@ -5,14 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class deathScript : MonoBehaviour {
     public float health = 5;
+    private Color enemyColor;
+    private Color lerpedColor;
 
 	// Use this for initialization
 	void Start () {
-		
+        enemyColor = gameObject.GetComponent<MeshRenderer>().material.color;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+       // gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(lerpedColor, enemyColor, 1);
 
         if (health < 1)
         {
@@ -32,6 +36,11 @@ public class deathScript : MonoBehaviour {
         if (coll.gameObject.tag == "Bullet")
         {
             health--;
+
+            Destroy(coll.gameObject);
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+            lerpedColor = gameObject.GetComponent<MeshRenderer>().material.color;
+            Invoke("lerpColor", 0.25f);
         }
 
     }
@@ -40,6 +49,13 @@ public class deathScript : MonoBehaviour {
     {
         Scene loadedLevel = SceneManager.GetActiveScene();
         SceneManager.LoadScene(loadedLevel.buildIndex);
+    }
+
+    void lerpColor()
+    {
+        //gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(lerpedColor, enemyColor, 100);
+
+        gameObject.GetComponent<MeshRenderer>().material.color = enemyColor;
     }
 }
 
