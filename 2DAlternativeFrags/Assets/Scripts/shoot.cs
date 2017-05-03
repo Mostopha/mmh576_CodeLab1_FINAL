@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class shoot : MonoBehaviour
 {
@@ -82,6 +83,15 @@ public class shoot : MonoBehaviour
                     ammo = 10;
                     Destroy(rayHit.collider.gameObject);
                 }
+
+                if (rayHit.collider.tag == "AlternativeFacts")
+                {
+
+                    rayHit.collider.GetComponent<TextMesh>().text = "WRONG";
+                    gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    GetComponentInChildren<MeshRenderer>().enabled = false;
+                    Invoke("Restart", 2);
+                }
             }
             else
             {
@@ -91,5 +101,11 @@ public class shoot : MonoBehaviour
 
 
 
+    }
+
+    void Restart()
+    {
+        Scene loadedLevel = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(loadedLevel.buildIndex);
     }
 }
