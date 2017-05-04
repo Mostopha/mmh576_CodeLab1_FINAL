@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolableBullet : Poolable
-{ //extends the abstract class "Poolable"
+{ 
 
-    public float maxDistance; //distance the bullet can be from the player
-    public float moveSpeed = 100; //force to apply to the bullet
-    GameObject player;//ref to the player object
+    public float maxDistance; 
+    public float moveSpeed = 100; 
+    GameObject player;
 
     public override void Setup() //override Setup (you have to, because it's abstract)
     {
@@ -15,8 +15,8 @@ public class PoolableBullet : Poolable
     }
 
     public override bool RePool()
-    { //override Repool (you have to, because it's abstract)
-        return Vector3.Distance(player.transform.position, transform.position) > maxDistance; //if the bullet is too far from the player
+    { 
+        return Vector3.Distance(player.transform.position, transform.position) > maxDistance; 
     }
 
     public override void Reset()
